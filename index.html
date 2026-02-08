@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Rose Day ❤️</title>
+    <style>
+        /* ============================================
+           ROOT VARIABLES & GLOBAL STYLES
+           ============================================ */
+        :root {
+            --rose-red: #E91E63;
+            --blush-pink: #FFB6C1;
+            --light-pink: #FFC0CB;
+            --soft-peach: #FFDAB9;
+            --pale-pink: #FFF0F5;
+            --gold: #FFD700;
+            --dark-text: #5A3A3A;
+            --gradient-bg: linear-gradient(135deg, #ffe9ec 0%, #fff0f5 50%, #ffe4e9 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--gradient-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe9ec 50%, #ffd7df 100%);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Animated Rose SVG Container */
+        .rose-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .rose-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 10px 20px rgba(233, 30, 99, 0.2));
+        }
+
+        /* Rose Petals Falling Animation */
+        @keyframes fallPetal {
+            0% {
+                transform: translateY(-100px) translateX(0) rotateZ(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(100px) rotateZ(360deg);
+                opacity: 0;
+            }
+        }
+
+        .petal {
+            position: fixed;
+            pointer-events: none;
+            font-size: 24px;
+            z-index: 1;
+        }
+
+        /* ============================================
+           TEXT ANIMATIONS
+           ============================================ */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .headline {
+            font-size: clamp(2.5em, 8vw, 4em);
+            font-weight: 700;
+            color: var(--rose-red);
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out 0.2s both;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtext {
+            font-size: clamp(1em, 3vw, 1.3em);
+            color: var(--dark-text);
+            margin-bottom: 40px;
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================
+           BUTTONS & INTERACTIONS
+           ============================================ */
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--rose-red), #C2185B);
+            color: white;
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-mute {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background: rgba(233, 30, 99, 0.8);
+            color: white;
+            border-radius: 50px;
+            font-size: 1em;
+            z-index: 100;
+            border: 2px solid white;
+        }
+
+        .btn-mute:hover {
+            background: rgba(233, 30, 99, 1);
+        }
+
+        /* ============================================
+           FLOATING HEARTS
+           ============================================ */
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) translateX(0) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes heartPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .floating-heart {
+            position: fixed;
+            font-size: 30px;
+            pointer-events: none;
+            animation: floatHeart 3s ease-out forwards;
+            z-index: 10;
+        }
+
+        .heart-burst {
+            position: fixed;
+            font-size: 40px;
+            pointer-events: none;
+            z-index: 50;
+            animation: heartPulse 0.6s ease-out;
+        }
+
+        /* ============================================
+           MESSAGE SECTION
+           ============================================ */
+        .message-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #fff9fa 0%, #ffe9ec 100%);
+            text-align: center;
+        }
+
+        .message-box {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            max-width: 700px;
+            box-shadow: 0 20px 60px rgba(233, 30, 99, 0.15);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .message-title {
+            font-size: clamp(1.8em, 5vw, 2.5em);
+            color: var(--rose-red);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .typing-text {
+            font-size: 1.1em;
+            color: var(--dark-text);
+            min-height: 100px;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: var(--rose-red);
+            animation: blinkCursor 1s infinite;
+            margin-left: 5px;
+        }
+
+        @keyframes blinkCursor {
+            0%, 50% {
+                opacity: 1;
+            }
+            51%, 100% {
+                opacity: 0;
+            }
+        }
+
+        /* ============================================
+           PERSONALIZED MESSAGE MODAL
+           ============================================ */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 60;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, white 0%, #fff0f5 100%);
+            margin: 10% auto;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(233, 30, 99, 0.3);
+            animation: slideInUp 0.4s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            color: var(--rose-red);
+            float: right;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.2);
+        }
+
+        .modal-text {
+            clear: both;
+            font-size: 1.2em;
+            color: var(--dark-text);
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+
+        /* ============================================
+           FINAL SECTION
+           ============================================ */
+        .final-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #ffe9ec 0%, #fff5f7 50%, #ffd7df 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-message {
+            font-size: clamp(2em, 6vw, 3.5em);
+            color: var(--rose-red);
+            font-weight: 700;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .final-rose {
+            font-size: 150px;
+            animation: floatRose 3s ease-in-out infinite;
+        }
+
+        @keyframes floatRose {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        .decorative-roses {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .deco-rose {
+            position: absolute;
+            font-size: 60px;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-50px) translateX(20px);
+            }
+        }
+
+        .final-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ============================================
+           GREETING CARD & 3D FLIP ANIMATION
+           ============================================ */
+        .greeting-card-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe9ec 50%, #fff0f5 100%);
+        }
+
+        .card-label {
+            font-size: 1.3em;
+            color: var(--rose-red);
+            margin-bottom: 30px;
+            font-weight: 600;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .card-container {
+            perspective: 1000px;
+            width: 300px;
+            height: 400px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-style: preserve-3d;
+        }
+
+        .card-container.flipped .card {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(233, 30, 99, 0.25);
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e9 100%);
+            border: 3px solid var(--blush-pink);
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card-back {
+            background: #000;
+            transform: rotateY(180deg);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-back video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+        }
+
+        .card-back::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(233, 30, 99, 0.05);
+            border-radius: 20px;
+            pointer-events: none;
+        }
+
+        .card-rose {
+            font-size: 80px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .card-text {
+            font-size: 1.5em;
+            color: var(--rose-red);
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .card-subtitle {
+            font-size: 1em;
+            color: var(--dark-text);
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Rose Petal Burst Animation */
+        .petal-burst {
+            position: fixed;
+            font-size: 30px;
+            pointer-events: none;
+            z-index: 40;
+        }
+
+        @keyframes petalBurst {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0.5) rotateZ(360deg);
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            .headline {
+                margin-bottom: 15px;
+            }
+
+            .subtext {
+                margin-bottom: 30px;
+                font-size: 1.05em;
+            }
+
+            .btn {
+                padding: 12px 30px;
+                font-size: 0.95em;
+            }
+
+            .message-box {
+                padding: 40px 25px;
+            }
+
+            .modal-content {
+                margin: 50% auto;
+                padding: 40px 25px;
+            }
+
+            .btn-mute {
+                top: 10px;
+                right: 10px;
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            .rose-container {
+                width: 100px;
+                height: 100px;
+            }
+
+            .final-rose {
+                font-size: 100px;
+            }
+
+            .deco-rose {
+                font-size: 40px;
+            }
+
+            .card-container {
+                width: 250px;
+                height: 330px;
+            }
+
+            .card-rose {
+                font-size: 60px;
+            }
+
+            .card-text {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            .headline {
+                font-size: 2em;
+            }
+
+            .subtext {
+                font-size: 0.95em;
+            }
+
+            .message-box {
+                padding: 30px 20px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+                margin: 30% auto;
+            }
+
+            .final-rose {
+                font-size: 80px;
+            }
+        }
+
+        /* ============================================
+           SMOOTH SCROLL ANIMATIONS
+           ============================================ */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* ============================================
+           SITE CREDIT
+           ============================================ */
+        .site-credit {
+            position: fixed;
+            right: 14px;
+            bottom: 12px;
+            background: rgba(255, 240, 245, 0.8);
+            color: var(--dark-text);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.9em;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            z-index: 120;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(233,30,99,0.08);
+        }
+
+        .site-credit a {
+            color: var(--rose-red);
+            text-decoration: none;
+            font-weight: 700;
+            margin-left: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- MUSIC CONTROL BUTTON -->
+    <button class="btn-mute" id="musicBtn" title="Toggle Music">🔊</button>
+
+    <!-- HIDDEN AUDIO ELEMENT FOR BACKGROUND MUSIC -->
+    <audio id="bgMusic" loop>
+        <source src="data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==" type="audio/wav">
+    </audio>
+
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero" id="heroSection">
+        <!-- ROSE SVG -->
+        <div class="rose-container">
+            <svg class="rose-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Stem -->
+                <line x1="50" y1="100" x2="50" y2="45" stroke="#2D5016" stroke-width="2"/>
+
+                <!-- Petals - Outer layer (darker rose red) -->
+                <circle cx="50" cy="30" r="12" fill="#E91E63" opacity="0.9"/>
+                <circle cx="40" cy="35" r="11" fill="#C2185B" opacity="0.85"/>
+                <circle cx="45" cy="45" r="10" fill="#E91E63" opacity="0.88"/>
+                <circle cx="60" cy="35" r="11" fill="#C2185B" opacity="0.85"/>
+                <circle cx="55" cy="45" r="10" fill="#E91E63" opacity="0.88"/>
+
+                <!-- Petals - Middle layer (medium pink) -->
+                <circle cx="50" cy="38" r="9" fill="#EC407A" opacity="0.9"/>
+                <circle cx="42" cy="42" r="8" fill="#F06292" opacity="0.85"/>
+                <circle cx="58" cy="42" r="8" fill="#F06292" opacity="0.85"/>
+
+                <!-- Petals - Inner layer (light pink) -->
+                <circle cx="50" cy="44" r="7" fill="#F48FB1" opacity="0.95"/>
+
+                <!-- Center (gold) -->
+                <circle cx="50" cy="44" r="4" fill="#FFD700"/>
+            </svg>
+        </div>
+
+        <!-- HEADLINE -->
+        <h1 class="headline">Happy Rose Day ❤️</h1>
+
+        <!-- SUBTEXT -->
+        <p class="subtext">Even though miles separate us, my love reaches you.</p>
+
+        <!-- CTA BUTTON -->
+        <button class="btn btn-primary" id="forYouBtn">For You 🌹</button>
+    </section>
+
+    <!-- ============================================
+         MESSAGE SECTION WITH TYPING ANIMATION
+         ============================================ -->
+    <section class="message-section" id="messageSection">
+        <div class="message-box fade-in-scroll">
+            <h2 class="message-title">A Letter for You</h2>
+            <p class="typing-text" id="typingText">
+                <span id="typingContent"></span><span class="cursor"></span>
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FINAL SECTION
+         ============================================ -->
+    <section class="final-section" id="finalSection">
+        <div class="decorative-roses" id="decorativeRoses"></div>
+        <div class="final-content fade-in-scroll">
+            <p class="final-message">This rose is just for you.</p>
+            <div class="final-rose">🌹</div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         GREETING CARD - CLICK TO FLIP & REVEAL PHOTO
+         ============================================ -->
+    <section class="greeting-card-section" id="greetingCardSection">
+        <p class="card-label fade-in-scroll">A Special Moment For You 💌</p>
+        <div class="card-container" id="cardContainer">
+            <div class="card">
+                <!-- Front of Card -->
+                <div class="card-front">
+                    <div class="card-rose">🌹</div>
+                    <p class="card-text">Click Me!</p>
+                    <p class="card-subtitle">to reveal your surprise</p>
+                </div>
+                <!-- Back of Card (Video) -->
+                <div class="card-back" id="cardPhoto">
+                    <video id="cardVideo" muted playsinline>
+                        <source src="VID_20241218_090346_450.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+        <p class="card-subtitle fade-in-scroll" style="margin-top: 20px; font-size: 0.95em; color: var(--dark-text);">Click the card to see the magic ✨</p>
+    </section>
+
+    <!-- ============================================
+         MODAL FOR PERSONALIZED MESSAGE
+         ============================================ -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeModal">&times;</span>
+            <h2 style="color: var(--rose-red); font-size: 1.8em; margin-bottom: 20px;">💌 For You</h2>
+            <div class="modal-text" id="personalizedMessage">
+                You mean the world to me. Every moment apart is a moment closer to being together. 
+                This rose symbolizes the endless love I have for you, no matter the distance. 
+                Happy Rose Day to the love of my life! 🌹❤️
+            </div>
+        </div>
+    </div>
+
+    <!-- SITE CREDIT -->
+    <div class="site-credit" aria-hidden="true">Made by <a href="#">ZAHID</a></div>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // ============================================
+        // CONFIGURATION - EASY TO CUSTOMIZE
+        // ============================================
+        const CONFIG = {
+            // Customize your love letter here
+            loveLetter: `In a world without you, I find myself constantly thinking about the moments we share. 
+            Your love has become my greatest source of strength, even across the miles that separate us. 
+            Every word we exchange, every call we make, every video we watch together - they all mean the world to me. 
+            Distance may test us, but it can never diminish what we feel for each other. 
+            You are my forever, and I cannot wait for the day when we're no longer apart. 
+            Happy Rose Day, my love. 🌹❤️`,
+
+            // Customize the personalized message that appears in the modal
+            personalizedMessage: `গোলাপ তো একদিন শুকিয়ে যায়,
+কিন্তু তুমি যে হাসিটা আমার জীবনে এনেছো—
+সেটা রোজ নতুন করে ফুটে ওঠে। 🌹❤️`,
+
+            // Typing speed in milliseconds (lower = faster)
+            typingSpeed: 50,
+
+            // Enable/disable background music
+            musicEnabled: false
+        };
+
+        // ============================================
+        // FALLING PETALS ANIMATION
+        // ============================================
+        function createFallingPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.textContent = '🌹';
+            petal.style.left = Math.random() * window.innerWidth + 'px';
+            petal.style.top = '-30px';
+            
+            const duration = 8 + Math.random() * 4; // 8-12 seconds
+            const delay = Math.random() * 2; // stagger start times
+
+            petal.style.animation = `fallPetal ${duration}s linear ${delay}s infinite`;
+            document.body.appendChild(petal);
+
+            // Remove old petals to prevent memory leak
+            setTimeout(() => {
+                petal.remove();
+            }, (duration + delay + 1) * 1000);
+        }
+
+        // Create petals continuously
+        setInterval(createFallingPetal, 300);
+
+        // ============================================
+        // TYPING ANIMATION
+        // ============================================
+        function typeText(element, text, speed) {
+            let i = 0;
+            element.innerHTML = '';
+
+            function type() {
+                if (i < text.length) {
+                    const char = text[i];
+                    if (char === '\n') {
+                        element.innerHTML += '<br>';
+                    } else {
+                        element.innerHTML += char;
+                    }
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing animation when page loads
+        window.addEventListener('load', () => {
+            const typingContent = document.getElementById('typingContent');
+            typeText(typingContent, CONFIG.loveLetter, CONFIG.typingSpeed);
+        });
+
+        // ============================================
+        // "FOR YOU" BUTTON - HEART BURST & MODAL
+        // ============================================
+        document.getElementById('forYouBtn').addEventListener('click', function() {
+            // Create multiple hearts that burst from the button
+            for (let i = 0; i < 8; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-burst';
+                heart.textContent = '❤️';
+                
+                // Random position around the button
+                const angle = (i / 8) * Math.PI * 2;
+                const distance = 100;
+                const x = window.innerWidth / 2 + Math.cos(angle) * distance;
+                const y = window.innerHeight / 2 + Math.sin(angle) * distance;
+                
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 600);
+            }
+
+            // Also create floating hearts
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFloatingHeart();
+                }, i * 200);
+            }
+
+            // Show the personalized message modal
+            setTimeout(() => {
+                document.getElementById('messageModal').style.display = 'block';
+                document.getElementById('personalizedMessage').textContent = CONFIG.personalizedMessage;
+            }, 300);
+        });
+
+        // ============================================
+        // FLOATING HEARTS (ON SCROLL)
+        // ============================================
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = window.innerHeight + 'px';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 3000);
+        }
+
+        // Create floating hearts periodically on scroll
+        let lastHeartTime = 0;
+        window.addEventListener('scroll', () => {
+            const now = Date.now();
+            if (now - lastHeartTime > 800) {
+                if (Math.random() > 0.7) { // 30% chance to create a heart
+                    createFloatingHeart();
+                    lastHeartTime = now;
+                }
+            }
+        });
+
+        // ============================================
+        // SCROLL FADE-IN ANIMATION
+        // ============================================
+        function observeElements() {
+            const fadeElements = document.querySelectorAll('.fade-in-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            fadeElements.forEach(element => observer.observe(element));
+        }
+
+        window.addEventListener('load', observeElements);
+
+        // ============================================
+        // MODAL CONTROLS
+        // ============================================
+        const modal = document.getElementById('messageModal');
+        const closeBtn = document.getElementById('closeModal');
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // ============================================
+        // MUSIC CONTROL
+        // ============================================
+        const musicBtn = document.getElementById('musicBtn');
+        const bgMusic = document.getElementById('bgMusic');
+        let isMuted = !CONFIG.musicEnabled;
+
+        musicBtn.textContent = isMuted ? '🔇' : '🔊';
+
+        musicBtn.addEventListener('click', () => {
+            if (isMuted) {
+                bgMusic.play().catch(() => {
+                    console.log('Music autoplay prevented by browser');
+                });
+                musicBtn.textContent = '🔊';
+                isMuted = false;
+            } else {
+                bgMusic.pause();
+                musicBtn.textContent = '🔇';
+                isMuted = true;
+            }
+        });
+
+        // ============================================
+        // DECORATIVE ROSES (FINAL SECTION)
+        // ============================================
+        function addDecorativeRoses() {
+            const container = document.getElementById('decorativeRoses');
+            const roseCount = window.innerWidth > 768 ? 8 : 5;
+
+            for (let i = 0; i < roseCount; i++) {
+                const deco = document.createElement('div');
+                deco.className = 'deco-rose';
+                deco.textContent = '🌹';
+                deco.style.left = Math.random() * 100 + '%';
+                deco.style.top = Math.random() * 80 + '%';
+                deco.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(deco);
+            }
+        }
+
+        window.addEventListener('load', addDecorativeRoses);
+        window.addEventListener('resize', () => {
+            document.getElementById('decorativeRoses').innerHTML = '';
+            addDecorativeRoses();
+        });
+
+        // ============================================
+        // GREETING CARD - 3D FLIP & ROSE PETAL BURST
+        // ============================================
+        const cardContainer = document.getElementById('cardContainer');
+        const cardVideo = document.getElementById('cardVideo');
+        let isFlipped = false;
+
+        // Load the video (make sure VID_20241218_090346_450.mp4 is in the same directory as index.html)
+        cardContainer.addEventListener('click', () => {
+            if (!isFlipped) {
+                // Flip to back (reveal video)
+                cardContainer.classList.add('flipped');
+                isFlipped = true;
+
+                // Unmute and set volume before playing so audio starts on user interaction
+                try {
+                    cardVideo.muted = false;
+                    cardVideo.volume = 0.9; // adjust as desired (0.0 - 1.0)
+                } catch (e) {
+                    console.warn('Could not set video volume/muted property', e);
+                }
+
+                // Play the video when flipped
+                cardVideo.play().catch(error => {
+                    console.log('Video play prevented or error:', error);
+                });
+
+                // Create rose petal burst
+                createPetalBurst();
+            } else {
+                // Flip back to front
+                cardContainer.classList.remove('flipped');
+                isFlipped = false;
+
+                // Pause the video when flipped back and reset
+                try {
+                    cardVideo.pause();
+                    cardVideo.currentTime = 0;
+                    cardVideo.muted = true; // mute again when hiding
+                } catch (e) {
+                    console.warn('Could not pause/reset video', e);
+                }
+            }
+        });
+
+        // Rose Petal Burst Animation Function
+        function createPetalBurst() {
+            const cardRect = cardContainer.getBoundingClientRect();
+            const cardCenterX = cardRect.left + cardRect.width / 2;
+            const cardCenterY = cardRect.top + cardRect.height / 2;
+            const petalCount = 12;
+
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal-burst';
+                petal.textContent = '🌹';
+
+                // Random angle for burst
+                const angle = (i / petalCount) * Math.PI * 2;
+                const distance = 300;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+
+                petal.style.left = cardCenterX + 'px';
+                petal.style.top = cardCenterY + 'px';
+                petal.style.setProperty('--tx', tx + 'px');
+                petal.style.setProperty('--ty', ty + 'px');
+                petal.style.animation = `petalBurst 1.2s ease-out forwards`;
+                petal.style.animationDelay = (i * 0.05) + 's';
+
+                document.body.appendChild(petal);
+
+                // Remove petal after animation
+                setTimeout(() => petal.remove(), 1200 + i * 50);
+            }
+
+            // Also create floating hearts during the burst
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFloatingHeart();
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
